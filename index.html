@@ -136,40 +136,54 @@
       </div>
     </section>
 
-    <section class="order" id="order">
-      <div class="container order-grid">
-        <div>
-          <span class="eyebrow">Поръчка</span>
-          <h2>Искаш ли да тестваш интерес още сега?</h2>
-          <p>
-            В тази версия бутоните са примерни. Следващата версия може да бъде с:
-            форма за поръчка, Messenger бутон, телефон, Meta Pixel и thank you page.
-          </p>
-        </div>
+<section class="order" id="order">
+  <div class="container order-grid">
+    <div>
+      <span class="eyebrow">Поръчка</span>
+      <h2>Поръчай MoveoPet бързо и лесно</h2>
+      <p>
+        Попълни данните си и ще се свържем с теб за потвърждение на поръчката.
+        Подходящ избор за стопани, които търсят допълнителна грижа за подвижността
+        и комфорта на своето куче.
+      </p>
 
-        <form class="order-card" onsubmit="event.preventDefault(); showDemoMessage();">
-          <label>
-            Име
-            <input type="text" placeholder="Вашето име" />
-          </label>
-          <label>
-            Телефон
-            <input type="text" placeholder="Вашият телефон" />
-          </label>
-          <label>
-            Брой опаковки
-            <select>
-              <option>1 опаковка</option>
-              <option>2 опаковки</option>
-              <option>3 опаковки</option>
-            </select>
-          </label>
-          <button class="btn btn-primary btn-full" type="submit">Изпрати запитване</button>
-          <p class="form-note">Демо форма. В следваща версия ще я свържем с реална поръчка и проследяване.</p>
-          <p id="demoMessage" class="demo-message" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
+      <ul class="check-list">
+        <li>Бързо изпращане след потвърждение</li>
+        <li>Удобна форма за заявка</li>
+        <li>Подходящо за кучета с активен начин на живот</li>
+      </ul>
+    </div>
+
+    <form class="order-card" action="#" method="post">
+      <label>
+        Име
+        <input type="text" name="name" placeholder="Вашето име" required />
+      </label>
+
+      <label>
+        Телефон
+        <input type="tel" name="phone" placeholder="Вашият телефон" required />
+      </label>
+
+      <label>
+        Брой опаковки
+        <select name="quantity" required>
+          <option value="1">1 опаковка</option>
+          <option value="2">2 опаковки</option>
+          <option value="3">3 опаковки</option>
+        </select>
+      </label>
+
+      <button class="btn btn-primary btn-full" type="submit">
+        Изпрати поръчка
+      </button>
+
+      <p class="form-note">
+        След изпращане на заявката ще се свържем с вас за потвърждение.
+      </p>
+    </form>
+  </div>
+</section>
   </main>
 
   <footer class="site-footer">
