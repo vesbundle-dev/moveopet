@@ -232,3 +232,19 @@ section{padding:34px 0}
   .hero-actions{flex-direction:column}
   .btn{width:100%}
 }
+.price-main {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--green);
+}
+
+.price-sub {
+  font-size: 0.95rem;
+  color: #888;
+}
+
+.price-note {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
