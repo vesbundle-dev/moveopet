@@ -25,6 +25,7 @@
       --accent: #2e7a5d;
       --border: #d8e5dc;
       --shadow: 0 18px 40px rgba(16, 51, 38, 0.10);
+      --shadow-strong: 0 28px 50px rgba(16, 51, 38, 0.12);
       --radius-xl: 24px;
       --radius-lg: 18px;
       --radius-md: 14px;
@@ -138,9 +139,9 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
+      grid-template-columns: 1fr 1.15fr;
       gap: 44px;
-      align-items: center;
+      align-items: start;
     }
 
     .eyebrow {
@@ -260,7 +261,9 @@
     }
 
     .trust-points,
-    .check-list {
+    .check-list,
+    .ingredient-list,
+    .usage-list {
       padding: 0;
       margin: 0;
       list-style: none;
@@ -288,7 +291,8 @@
     .hero-visual {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
+      padding-top: 6px;
     }
 
     .product-card {
@@ -298,7 +302,7 @@
       border: 1px solid rgba(31, 92, 69, 0.10);
       border-radius: 32px;
       padding: 16px;
-      box-shadow: 0 28px 50px rgba(16, 51, 38, 0.12);
+      box-shadow: var(--shadow-strong);
       position: relative;
       overflow: hidden;
     }
@@ -342,7 +346,8 @@
     .section-head h2,
     .use-cases h2,
     .order h2,
-    .faq h2 {
+    .faq h2,
+    .info-block h2 {
       margin: 0 0 12px;
       font-size: clamp(1.7rem, 3vw, 2.6rem);
       line-height: 1.12;
@@ -353,7 +358,8 @@
     .section-head p,
     .use-cases p,
     .order p,
-    .faq-intro {
+    .faq-intro,
+    .info-block p {
       color: var(--text-soft);
       font-size: 1.03rem;
     }
@@ -368,7 +374,8 @@
 
     .benefit-card,
     .trust-card,
-    .faq-card {
+    .faq-card,
+    .info-block {
       background: rgba(255, 255, 255, 0.92);
       border: 1px solid var(--border);
       border-radius: var(--radius-xl);
@@ -389,6 +396,49 @@
     .faq-card p {
       margin: 0;
       color: var(--text-soft);
+    }
+
+    .info-sections {
+      padding-top: 8px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .info-block h3 {
+      margin: 26px 0 10px;
+      font-size: 1.14rem;
+      color: var(--primary-deep);
+    }
+
+    .info-block h3:first-of-type {
+      margin-top: 22px;
+    }
+
+    .manufacturer-text p {
+      margin: 0 0 16px;
+    }
+
+    .ingredient-list li,
+    .usage-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(31, 92, 69, 0.08);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .ingredient-list li:last-child,
+    .usage-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .ingredient-list strong,
+    .usage-list strong {
+      color: var(--primary-deep);
     }
 
     .use-grid,
@@ -552,6 +602,7 @@
 
     @media (max-width: 1024px) {
       .hero-grid,
+      .info-grid,
       .use-grid,
       .order-grid,
       .benefit-grid,
@@ -571,6 +622,7 @@
 
       .hero-visual {
         order: 1;
+        padding-top: 0;
       }
 
       .product-card {
@@ -623,7 +675,8 @@
       .faq-card,
       .step,
       .order-card,
-      .info-panel {
+      .info-panel,
+      .info-block {
         border-radius: 20px;
       }
 
@@ -688,6 +741,52 @@
       </div>
     </section>
 
+    <section class="info-sections">
+      <div class="container info-grid">
+        <div class="info-block manufacturer-text">
+          <span class="eyebrow">Описание от производителя</span>
+          <h2>Специално разработена формула за поддържане на здрави стави и добро движение</h2>
+          <p>
+            Никсен Петс „За подвижни стави“ е специално разработена формула за поддържане на здрави стави
+            и добро движение при кучета от всички породи и възрасти.
+          </p>
+          <p>
+            Продуктът подпомага естественото образуване на съединителна тъкан, допринася за намаляване
+            на сковаността и подобрява подвижността на ставите, особено при възрастни кучета или такива
+            с повишено физическо натоварване.
+          </p>
+          <p>
+            Комбинацията от глюкозамин, хондроитин, зеленоуста мида и хиалуронова киселина поддържа
+            хрущялната структура и ставната течност, а добавените витамини С и Е и манган имат
+            антиоксидантно действие и спомагат за възстановяването на тъканите.
+          </p>
+
+          <h3>Указания за употреба:</h3>
+          <ul class="usage-list">
+            <li><strong>Малки кучета (до 15 кг)</strong> – 1 таблетка дневно</li>
+            <li><strong>Средно големи кучета (16–30 кг)</strong> – 2 таблетки дневно</li>
+            <li><strong>Големи кучета (31–45 кг)</strong> – 3 таблетки дневно</li>
+            <li><strong>Много големи кучета (над 45 кг)</strong> – 4 таблетки дневно</li>
+          </ul>
+        </div>
+
+        <div class="info-block">
+          <span class="eyebrow">Състав</span>
+          <h2>Съставки в 1 таблетка</h2>
+          <ul class="ingredient-list">
+            <li>Глюкозамин сулфат – 250 mg</li>
+            <li>Зеленоуста мида (Perna canaliculus) – 150 mg</li>
+            <li>Хондроитин сулфат – 50 mg</li>
+            <li>Хиалуронова киселина – 1,5 mg</li>
+            <li>L-Аргинин – 51 mg</li>
+            <li>Витамин C – 12,5 mg</li>
+            <li>Витамин E – 500 μg</li>
+            <li>Манганов сулфат монохидрат – 3 mg</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section class="benefits" id="benefits">
       <div class="container">
         <div class="section-head">
@@ -695,7 +794,7 @@
           <h2>Когато искаш кучето ти да се движи по-леко и уверено</h2>
           <p>
             Всеки стопанин иска кучето му да запази своята енергия, активност и желание за движение.
-            Създаден с идея за допълнителна подкрепа в ежедневната грижа за ставния комфорт.
+            Създадена е с идея за допълнителна подкрепа в ежедневната грижа за ставния комфорт.
           </p>
         </div>
 
