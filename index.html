@@ -3,13 +3,624 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Подходящо при нужда и за превенция на ставния дискомфорт</title>
-  <meta name="description" content="„За подвижни стави“ е продукт, насочен към поддържане на
-по-леко движение, комфорт и активен начин на живот при кучетата. Подходящ както при нужда от допълнителна грижа за ставите, така и за превенция при активни и по-възрастни кучета" />
+  <title>MoveoPet – Подкрепа за подвижни стави при кучета</title>
+  <meta
+    name="description"
+    content="MoveoPet е хранителна добавка за кучета, насочена към поддържане на ставния комфорт, по-лекото движение и активния начин на живот. Подходяща при нужда и за превантивна грижа."
+  />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --bg: #eef4ef;
+      --bg-soft: #f6faf7;
+      --white: #ffffff;
+      --text: #153126;
+      --text-soft: #4c675b;
+      --primary: #1f5c45;
+      --primary-dark: #174534;
+      --primary-deep: #103326;
+      --accent: #2e7a5d;
+      --border: #d8e5dc;
+      --shadow: 0 18px 40px rgba(16, 51, 38, 0.10);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(46, 122, 93, 0.08), transparent 28%),
+        linear-gradient(180deg, #f4f8f5 0%, #edf4ef 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 248, 245, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(31, 92, 69, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+
+    .brand-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--primary-deep);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      transition: 0.25s ease;
+      box-shadow: 0 10px 22px rgba(31, 92, 69, 0.18);
+    }
+
+    .nav-cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 72px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 3.7rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: var(--primary-deep);
+      max-width: 700px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--text-soft);
+      max-width: 680px;
+      margin-bottom: 28px;
+    }
+
+    .price-box {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      background: linear-gradient(180deg, #ffffff 0%, #f3f8f4 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      min-width: 240px;
+    }
+
+    .price-label {
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .price-main {
+      font-size: 2.2rem;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--primary-deep);
+      letter-spacing: -0.04em;
+    }
+
+    .price-sub {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .price-note {
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-deep) 100%);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(31, 92, 69, 0.20);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.85);
+      color: var(--primary-deep);
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .trust-points,
+    .check-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .trust-points li,
+    .check-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .trust-points li::before,
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .product-card {
+      width: 100%;
+      max-width: 480px;
+      background: linear-gradient(180deg, #ffffff 0%, #eef5f0 100%);
+      border: 1px solid rgba(31, 92, 69, 0.10);
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: 0 28px 50px rgba(16, 51, 38, 0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(46, 122, 93, 0.14), transparent 70%);
+      top: -50px;
+      right: -40px;
+    }
+
+    .product-card img {
+      position: relative;
+      z-index: 2;
+      max-height: 520px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-head.center {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-head h2,
+    .use-cases h2,
+    .order h2,
+    .faq h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.7rem, 3vw, 2.6rem);
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      color: var(--primary-deep);
+    }
+
+    .section-head p,
+    .use-cases p,
+    .order p,
+    .faq-intro {
+      color: var(--text-soft);
+      font-size: 1.03rem;
+    }
+
+    .benefit-grid,
+    .trust-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .benefit-card,
+    .trust-card,
+    .faq-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .benefit-card h3,
+    .trust-card h3,
+    .faq-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+      color: var(--primary-deep);
+    }
+
+    .benefit-card p,
+    .trust-card p,
+    .faq-card p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .use-grid,
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .info-panel {
+      background: linear-gradient(180deg, var(--primary) 0%, var(--primary-deep) 100%);
+      color: #fff;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 24px 44px rgba(16, 51, 38, 0.18);
+    }
+
+    .info-chip {
+      display: inline-flex;
+      margin: 0 10px 12px 0;
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .how .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .step span {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(31, 92, 69, 0.10);
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      color: var(--primary-deep);
+      font-size: 1.08rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--text-soft);
+    }
+
+    .order-card {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 26px;
+      box-shadow: 0 28px 50px rgba(16, 51, 38, 0.10);
+    }
+
+    .order-card label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-deep);
+    }
+
+    .order-card input,
+    .order-card select,
+    .order-card textarea {
+      width: 100%;
+      margin-top: 8px;
+      min-height: 54px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #f9fcfa;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+
+    .order-card textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .order-card input:focus,
+    .order-card select:focus,
+    .order-card textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(46, 122, 93, 0.10);
+    }
+
+    .form-note {
+      margin: 14px 0 0;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .trust-strip {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(31, 92, 69, 0.08);
+      color: var(--primary-dark);
+      border: 1px solid rgba(31, 92, 69, 0.10);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .faq {
+      padding-bottom: 72px;
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(31, 92, 69, 0.10);
+      background: linear-gradient(180deg, #eef4ef 0%, #e5efe8 100%);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 28px 0 34px;
+      align-items: center;
+    }
+
+    .footer-wrap p,
+    .footer-note {
+      margin: 8px 0 0;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .use-grid,
+      .order-grid,
+      .benefit-grid,
+      .trust-grid,
+      .faq-grid,
+      .how .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero-copy {
+        order: 2;
+      }
+
+      .hero-visual {
+        order: 1;
+      }
+
+      .product-card {
+        max-width: 420px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--container), calc(100% - 22px));
+      }
+
+      .nav {
+        min-height: 74px;
+      }
+
+      .brand-sub {
+        display: none;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn,
+      .nav-cta {
+        width: 100%;
+      }
+
+      .price-box {
+        width: 100%;
+      }
+
+      .product-card {
+        padding: 24px;
+        border-radius: 24px;
+      }
+
+      .benefit-card,
+      .trust-card,
+      .faq-card,
+      .step,
+      .order-card,
+      .info-panel {
+        border-radius: 20px;
+      }
+
+      .footer-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -17,7 +628,8 @@
       <div class="brand">
         <span class="brand-mark">M</span>
         <div>
-         <div class="brand-sub">За по-леко движение и активен живот</div>
+          <div class="brand-name">MoveoPet</div>
+          <div class="brand-sub">Подкрепа за по-леко движение и активен живот при кучета</div>
         </div>
       </div>
       <a class="nav-cta" href="#order">Поръчай</a>
@@ -28,30 +640,21 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow">Подходящо при нужда и за превенция на ставния дискомфорт</span>
-          <h1>Подкрепа за по-леко движение и по-активно ежедневие.</h1>
+          <span class="eyebrow">Подходящо при нужда и за превантивна грижа</span>
+          <h1>Подкрепа за ставния комфорт и по-активно ежедневие на вашето куче.</h1>
           <p class="lead">
-            „За подвижни стави“ е продукт, насочен към поддържане на
-по-леко движение, комфорт и активен начин на живот при кучетата.
-Подходящ както при нужда от допълнителна грижа за ставите,
-така и за превенция при активни и по-възрастни кучета.
+            MoveoPet е хранителна добавка за кучета, насочена към поддържане на по-леко движение,
+            ставен комфорт и активен начин на живот. Подходяща е както при повишено натоварване
+            и нужда от допълнителна грижа, така и като част от редовната поддръжка при активни,
+            едри и по-възрастни кучета.
           </p>
 
-<div class="price-box">
-  <div class="price-label">Цена</div>
-
-  <div class="price-main">
-    33.13 €
-  </div>
-
-  <div class="price-sub">
-    64.80 лв.
-  </div>
-
-  <div class="price-note">
-    120 таблетки
-  </div>
-</div>
+          <div class="price-box">
+            <div class="price-label">Цена</div>
+            <div class="price-main">33.13 €</div>
+            <div class="price-sub">64.80 лв.</div>
+            <div class="price-note">120 таблетки</div>
+          </div>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#order">Поръчай сега</a>
@@ -59,15 +662,15 @@
           </div>
 
           <ul class="trust-points">
-            <li>Подходящо за активни и по-възрастни кучета</li>
-            <li>Фокус върху комфорт и подвижност</li>
-            <li>Лендинг, готов за GitHub и Vercel</li>
+            <li>Подходящо за активни, едри и по-възрастни кучета</li>
+            <li>Насочено към комфорт, подвижност и ежедневна грижа</li>
+            <li>Удобен формат за прием – 120 таблетки</li>
           </ul>
         </div>
 
         <div class="hero-visual">
           <div class="product-card">
-            <img src="product.png" alt="MoveoPet за подвижни стави при кучета" />
+            <img src="product.png" alt="MoveoPet – добавка за подвижни стави при кучета" />
           </div>
         </div>
       </div>
@@ -77,25 +680,36 @@
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">Защо MoveoPet</span>
-          <h2>Сайтът е подготвен да продава ясно и директно</h2>
+          <h2>Когато искаш кучето ти да се движи по-леко и уверено</h2>
           <p>
-            Структурата е направена за Meta реклами, Messenger поръчки и бъдещо
-            надграждане с форма, пиксел и thank you page.
+            Всеки стопанин иска кучето му да запази своята енергия, активност и желание за движение.
+            MoveoPet е създаден с идея за допълнителна подкрепа в ежедневната грижа за ставния комфорт.
           </p>
         </div>
 
         <div class="benefit-grid">
           <article class="benefit-card">
-            <h3>Ясно обещание</h3>
-            <p>Фокус върху подвижност, комфорт и активен живот без прекалени медицински твърдения.</p>
+            <h3>Подкрепа за активното движение</h3>
+            <p>
+              Подходящ избор за кучета, които се движат много, обичат дълги разходки,
+              игра и физическо натоварване.
+            </p>
           </article>
+
           <article class="benefit-card">
-            <h3>Силен CTA</h3>
-            <p>Бутони за поръчка и контакт, които можеш после да свържеш с форма или Messenger.</p>
+            <h3>Удобна грижа при по-възрастни кучета</h3>
+            <p>
+              Добър вариант и за стопани, които искат допълнителна ежедневна подкрепа
+              за комфорта и подвижността с напредване на възрастта.
+            </p>
           </article>
+
           <article class="benefit-card">
-            <h3>Готов за реклами</h3>
-            <p>Дизайнът е чист и мобилен, така че да работи добре при трафик от Facebook и Instagram.</p>
+            <h3>Подходящо и за превенция</h3>
+            <p>
+              Не е нужно да чакаш проблемът да се задълбочи, за да се погрижиш
+              за ставния комфорт и активния ритъм на любимеца си.
+            </p>
           </article>
         </div>
       </div>
@@ -104,19 +718,66 @@
     <section class="use-cases">
       <div class="container use-grid">
         <div>
-          <span class="eyebrow">Подходящ за</span>
-          <h2>Кучета с активен режим или нужда от допълнителна подкрепа</h2>
+          <span class="eyebrow">Подходящо за</span>
+          <h2>Кучета с активен режим или нужда от по-щадяща ежедневна грижа</h2>
+          <p>
+            MoveoPet може да бъде добър избор за стопани, които искат допълнителна подкрепа
+            в различни етапи от живота на своето куче.
+          </p>
+
           <ul class="check-list">
-            <li>Активни кучета и ежедневни разходки</li>
-            <li>По-възрастни кучета</li>
-            <li>Породи с по-голямо натоварване на ставите</li>
-            <li>Стопани, които търсят удобна поддържаща грижа</li>
+            <li>Активни кучета с чести разходки, игри и движение</li>
+            <li>По-възрастни кучета, при които комфортът е особено важен</li>
+            <li>Едри породи с по-голямо натоварване върху ставите</li>
+            <li>Кучета, при които стопаните търсят поддържаща грижа в ежедневието</li>
           </ul>
         </div>
+
         <div class="info-panel">
-          <div class="info-chip">Фокус: стави и подвижност</div>
-          <div class="info-chip">Формат: 120 таблетки</div>
-          <div class="info-chip">Модел: лендинг за директна реклама</div>
+          <div class="info-chip">Фокус: ставен комфорт</div>
+          <div class="info-chip">Фокус: подвижност</div>
+          <div class="info-chip">Фокус: активен живот</div>
+          <div class="info-chip">Опаковка: 120 таблетки</div>
+          <div class="info-chip">Подходящо при нужда и за превенция</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Защо стопаните търсят такъв продукт</span>
+          <h2>Когато кучето се движи добре, то живее по-спокойно и по-активно</h2>
+          <p>
+            Подвижността е важна част от качеството на живот на всяко куче.
+            Затова много стопани търсят добавка, която да се впише лесно в грижата за любимеца им.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <article class="trust-card">
+            <h3>Ежедневен комфорт</h3>
+            <p>
+              Подходящо за стопани, които искат да поддържат комфорта на своето куче
+              както у дома, така и по време на активните разходки.
+            </p>
+          </article>
+
+          <article class="trust-card">
+            <h3>Подкрепа в точния момент</h3>
+            <p>
+              Може да бъде включено както при видима нужда от допълнителна грижа,
+              така и като част от по-ранна и разумна превенция.
+            </p>
+          </article>
+
+          <article class="trust-card">
+            <h3>Лесно за поръчка</h3>
+            <p>
+              Поръчваш бързо, оставяш данни за контакт и след това се свързваме
+              за потвърждение на заявката.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -124,92 +785,147 @@
     <section class="how">
       <div class="container">
         <div class="section-head center">
-          <span class="eyebrow">Как да използваш този сайт</span>
-          <h2>Готов за качване още днес</h2>
+          <span class="eyebrow">Как става поръчката</span>
+          <h2>Бързо, лесно и удобно</h2>
+          <p>
+            Попълваш формата, ние се свързваме с теб за потвърждение и уточняване на детайлите.
+          </p>
         </div>
 
         <div class="steps">
           <article class="step">
             <span>1</span>
-            <h3>Качи файловете в ново GitHub repo</h3>
-            <p>Създай repo с име <strong>moveopet</strong> и качи всички файлове.</p>
+            <h3>Попълваш данните си</h3>
+            <p>Оставяш име, телефон и желания брой опаковки.</p>
           </article>
+
           <article class="step">
             <span>2</span>
-            <h3>Свържи го с Vercel</h3>
-            <p>Import Project → избираш repo-то → Deploy.</p>
+            <h3>Свързваме се с теб</h3>
+            <p>Потвърждаваме поръчката и уточняваме изпращането.</p>
           </article>
+
           <article class="step">
             <span>3</span>
-            <h3>После надграждаме</h3>
-            <p>Добавяме Meta Pixel, форма за поръчка, thank you page и conversion tracking.</p>
+            <h3>Изпращаме бързо</h3>
+            <p>Получаваш продукта удобно след потвърждение на заявката.</p>
           </article>
         </div>
       </div>
     </section>
 
-<section class="order" id="order">
-  <div class="container order-grid">
-    <div>
-      <span class="eyebrow">Поръчка</span>
-      <h2>Поръчай MoveoPet бързо и лесно</h2>
-      <p>
-        Попълни данните си и ще се свържем с теб за потвърждение на поръчката.
-        Подходящ избор за стопани, които търсят допълнителна грижа за подвижността
-        и комфорта на своето куче.
-      </p>
+    <section class="order" id="order">
+      <div class="container order-grid">
+        <div>
+          <span class="eyebrow">Поръчка</span>
+          <h2>Поръчай MoveoPet бързо и лесно</h2>
+          <p>
+            Ако търсиш допълнителна грижа за подвижността и ставния комфорт на твоето куче,
+            попълни формата и ще се свържем с теб за потвърждение.
+          </p>
 
-      <ul class="check-list">
-        <li>Бързо изпращане след потвърждение</li>
-        <li>Удобна форма за заявка</li>
-        <li>Подходящо за кучета с активен начин на живот</li>
-      </ul>
-    </div>
+          <ul class="check-list">
+            <li>Лесна заявка само с няколко полета</li>
+            <li>Подходящо за активни, едри и по-възрастни кучета</li>
+            <li>Удобен избор за ежедневна поддържаща грижа</li>
+          </ul>
 
-    <form class="order-card" action="#" method="post">
-      <label>
-        Име
-        <input type="text" name="name" placeholder="Вашето име" required />
-      </label>
+          <div class="trust-strip">
+            <span class="trust-badge">Поръчка с потвърждение</span>
+            <span class="trust-badge">120 таблетки</span>
+            <span class="trust-badge">33.13 € / 64.80 лв.</span>
+          </div>
+        </div>
 
-      <label>
-        Телефон
-        <input type="tel" name="phone" placeholder="Вашият телефон" required />
-      </label>
+        <form class="order-card" action="#" method="post">
+          <label>
+            Име
+            <input type="text" name="name" placeholder="Вашето име" required />
+          </label>
 
-      <label>
-        Брой опаковки
-        <select name="quantity" required>
-          <option value="1">1 опаковка</option>
-          <option value="2">2 опаковки</option>
-          <option value="3">3 опаковки</option>
-        </select>
-      </label>
+          <label>
+            Телефон
+            <input type="tel" name="phone" placeholder="Вашият телефон" required />
+          </label>
 
-      <button class="btn btn-primary btn-full" type="submit">
-        Изпрати поръчка
-      </button>
+          <label>
+            Брой опаковки
+            <select name="quantity" required>
+              <option value="1">1 опаковка</option>
+              <option value="2">2 опаковки</option>
+              <option value="3">3 опаковки</option>
+            </select>
+          </label>
 
-      <p class="form-note">
-        След изпращане на заявката ще се свържем с вас за потвърждение.
-      </p>
-    </form>
-  </div>
-</section>
+          <label>
+            Бележка
+            <textarea name="message" placeholder="По желание: допълнителна информация"></textarea>
+          </label>
+
+          <button class="btn btn-primary btn-full" type="submit">
+            Изпрати заявка
+          </button>
+
+          <p class="form-note">
+            След изпращане на заявката ще се свържем с вас за потвърждение на поръчката.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Често задавани въпроси</span>
+          <h2>Какво питат стопаните най-често</h2>
+          <p class="faq-intro">
+            Подготвихме кратки отговори на най-честите въпроси, за да бъде изборът по-лесен.
+          </p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>За какви кучета е подходящ MoveoPet?</h3>
+            <p>
+              Подходящ е за активни, едри и по-възрастни кучета, както и за стопани,
+              които искат допълнителна грижа за ставния комфорт и по-лекото движение.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Може ли да се използва и превантивно?</h3>
+            <p>
+              Да, много стопани търсят такъв тип продукт не само при нужда,
+              а и като част от по-ранна поддържаща грижа.
+            </p>
+          </article>
+
+          <article class="faq-card">
+            <h3>Как става поръчката?</h3>
+            <p>
+              Попълвате формата с име и телефон, а след това се свързваме с вас
+              за потвърждение и уточняване на изпращането.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-wrap">
       <div>
         <div class="brand-name">MoveoPet</div>
-        <p>Лендинг страница за продукт за подвижни стави при кучета.</p>
+        <p>Подкрепа за ставния комфорт, подвижността и активния живот при кучета.</p>
       </div>
       <div class="footer-note">
-        Текущата версия е подготвена за тестове и реклама. Следваща стъпка: форма + пиксел.
+        © <span id="year"></span> MoveoPet. Всички права запазени.
       </div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
